@@ -1,29 +1,53 @@
 button {
-    all: unset;
-    font-weight: 500;
-    color: var(--text-highlight);
-    padding: .75rem 1.5rem;
-    border-radius: .5rem;
-    cursor: pointer;
+  all: unset;
+  display: inline-flex;           /* <<< NOVO */
+  align-items: center;            /* centraliza vertical */
+  justify-content: center;        /* centraliza texto horizontal */
+  font-weight: 500;
+  color: var(--text-highlight);
+  padding: .75rem 1.5rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  box-sizing: border-box;         /* garante largura certinha */
+}
 
-    &.btn-primary {
-        color: white;
-        background-color: #E43A12;
+button.btn-primary {
+  color: white;
+  background-color: #E43A12;
+}
 
-        &:hover, &:focus {
-            color: white;
-            background-color: #F3541C;
-        }
+button.btn-primary:hover,
+button.btn-primary:focus {
+  color: white;
+  background-color: #F3541C;
+}
 
-    }
+button.btn-secondary {
+  margin-left: auto;
+  border: 1px solid var(--text-highlight);
+}
 
-    &.btn-secondary {
-        margin-left: auto;
-        border: 1px solid var(--text-highlight);
-    }
+button:hover,
+button:focus {
+  color: #E43A12;
+  outline: .25rem solid var(--surface-secondary);
+}
 
-    &:hover, &:focus {
-            color: #E43A12;
-            outline: .25rem solid var(--surface-secondary);
-        }
+/* =====================  MOBILE  ===================== */
+@media (max-width: 768px) {
+  .actions-wrapper {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    align-items: stretch; /* filhos ocupam toda a largura */
+  }
+
+  .actions-wrapper button {
+    width: 100%;          /* pega 100% da largura do container */
+  }
+
+  .btn-secondary {
+    margin-left: 0;       /* não empurra mais pra direita */
+  }
 }

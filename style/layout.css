@@ -1,83 +1,85 @@
 #app {
-    display: grid;
-    grid-template-columns: 51.25% 48.75%;
-    
-    height: 100vh;
+  display: grid;
+  grid-template-columns: 51.25% 48.75%;
+  height: 100vh;
 }
 
 main {
-    overflow: auto;
-    padding: 4rem; /* 64px */
+  overflow: auto;
+  padding: 4rem; /* 64px */
 }
 
 main .main-container {
-    max-width: 33rem;/* = 528px */
-    margin-left: auto;
-    gap: .5rem;/* = 8px */
-    margin-bottom: 1.5rem;/* =24px */
+  max-width: 33rem; /* 528px */
+  margin-left: auto;
+  gap: .5rem; /* 8px */
+  margin-bottom: 1.5rem; /* 24px */
 }
 
 main .back {
-    display: flex;
-    align-items: center;
-    gap: .5rem; /* 8px */
-    margin-bottom: 1.5rem; /* 24px */
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1.5rem; /* 24px */
 }
 
 main h1 {
-    font: 600 1.5rem/1.25 var(--font-family);
-    margin-bottom: .5rem;
+  font: 600 1.5rem/1.25 var(--font-family);
+  margin-bottom: .5rem;
 }
 
 aside {
-    background-color: var(--surface-secondary);
-    padding: 4rem;/* = 64px */
+  background-color: var(--surface-secondary);
+  padding: 4rem; /* 64px */
 }
 
 aside .aside-container {
-    max-width: 31rem;/* = 496px */
+  max-width: 31rem; /* 496px */
 }
 
 aside h2 {
-    font: 600 2.5rem/1.25 var(--font-family);
-    margin-bottom: .5rem;
+  font: 600 2.5rem/1.25 var(--font-family);
+  margin-bottom: .5rem;
 }
 
 aside span {
-    color: var(--text-highlight);
+  color: var(--text-highlight);
 }
 
 .ilustracao {
-    height: auto;
-    margin-top: 2rem;
+  height: auto;
+  margin-top: 2rem;
 }
 
-/* ====  MEDIA QUERIES  ==== */
+/* =====================  MOBILE  ===================== */
 @media (max-width: 768px) {
-    body {
-        overflow: auto;
-    }
 
-    #app {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-        "aside"
-        "main";
-        height: auto;
-        min-height: 100vh;
-    }
+  /* libera rolagem no mobile */
+  body {
+    overflow: auto;
+  }
 
-    aside {
-        padding: 1.5rem; /* 24px */
-    }
+  /* em vez de grid, vira coluna flex pra controlar a ordem */
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
 
-    aside .aside-container {
-        max-width: 19.5rem; /* 312px */
-        margin: 0 auto;
-        text-align: center;
-    }
+  /* HERO PRIMEIRO (logo + texto + ilustração) */
+  aside {
+    order: 0;
+    padding: 1.5rem; /* 24px */
+  }
 
-    aside header img {
+  aside .aside-container {
+    max-width: 19.5rem; /* 312px */
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  aside header img {
     display: block;
     margin: 0 auto .75rem;
   }
@@ -87,13 +89,15 @@ aside span {
   }
 
   .ilustracao {
-    margin-top: 1.5rem; /* 24px abaixo do texto */
+    margin-top: 1.5rem; /* 24px */
   }
 
+  /* FORMULÁRIO DEPOIS DO HERO */
   main {
+    order: 1;
     overflow: visible;
-    padding: 0 1.5rem 1.5rem;   /* laterais e bottom = 24px */
-    margin-top: 1.5rem;         /* 24px entre ilustração e bloco "Voltar" */
+    padding: 0 1.5rem 1.5rem; /* 24px nas laterais e bottom */
+    margin-top: 1.5rem;        /* 24px entre hero e “Voltar” */
   }
 
   main .main-container {
@@ -101,9 +105,13 @@ aside span {
     margin: 0 auto;
   }
 
+  /* BOTÕES – coluna, centralizados na largura do conteúdo */
   .actions-wrapper {
+    margin-top: 3rem;
+    display: flex;
     flex-direction: column;
     gap: .75rem;
+    align-items: stretch; /* botões ocupam toda a largura da coluna */
   }
 
   .actions-wrapper button {
@@ -112,7 +120,6 @@ aside span {
   }
 
   .btn-secondary {
-    margin-left: 0;
+    margin-left: 0; /* remove empurrão pro lado direito */
   }
-
 }
