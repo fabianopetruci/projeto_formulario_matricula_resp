@@ -1,0 +1,51 @@
+#app {
+    display: grid;
+    grid-template-columns: 51.25% 48.75%;
+    
+    height: 100vh;
+}
+
+main {
+    overflow: auto;
+    padding: 4rem; /* 1 rem = 16px, 64/16 = 4rem */
+}
+
+main .main-container {
+    max-width: 33rem;/* = 528px */
+    margin-left: auto;
+    gap: .5rem;/* = 8px */
+    margin-bottom: 1.5rem;/* =24px */
+}
+
+main .back {
+    display: flex;
+    align-items: center;
+}
+
+main h1 {
+    font: 600 1.5rem/1.25 var(--font-family);
+    margin-bottom: .5rem;
+}
+
+aside {
+    background-color: var(--surface-secondary);
+    padding: 4rem;/* = 64px */
+}
+
+aside .aside-container {
+    max-width: 31rem;/* = 496px */
+}
+
+aside h2 {
+    font: 600 2.5rem/1.25 var(--font-family);
+    margin-bottom: .5rem;
+}
+
+aside span {
+    color: var(--text-highlight);
+}
+
+.ilustracao {
+    height: auto;
+    margin-top: 2rem;
+}
